@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Form test</title>
+	<script src="js/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript">
+
+		var GLOBALS = {
+
+			countries: {
+				'AF': {'label': 'Afghanistan'},
+				'RO': {'label': 'Romania'},
+				'US': {'label': 'United States of America'}
+			},
+
+			states: {
+				'RO': {
+					'IF': 'Ilfov',
+					'DJ': 'Dolj',
+					'B': 'Bucuresti'
+				},
+				'US': {
+					'AL': 'Alabama',
+					'NY': 'New York',
+					'TX': 'Texas'
+				}
+			},
+
+			formFields: {
+
+				name: 'Serban Ghita',
+				country: 'RO',
+				state: 'DJ'
+
+			}
+
+		};
+
+		var ShoppingCart = function(){
+
+			this.forms = {};
+
+		}
+
+		ShoppingCart.prototype.test = function(){
+
+			console.log('test');
+
+		}
+
+		var ShoppingCartFormModel = function(formName, fields){
+
+			var i;
+			this.fields = {};
+
+			if(fields){
+
+				for(i in fields){
+
+					console.log(i);
+					this.setField(i, fields[i]);
+
+				}
+
+			}
+
+		}
+
+		ShoppingCartFormModel.prototype.setField = function(fieldName, fieldInfo){
+
+
+			switch(typeof fieldInfo){
+
+				case 'string':
+
+					this.fields[fieldName] = { value: fieldInfo };
+
+				break;
+
+				case 'object':
+				default:
+
+					this.fields[fieldName] = fieldInfo;
+
+				break;
+
+			}
+
+		}
+
+		ShoppingCartFormModel.prototype.setFieldEvent = function(fieldName, eventType, eventHandler){
+
+			this.fields[fieldName]['events'][eventType] = eventHandler;
+
+		}
+
+		ShoppingCartFormModel.prototype.getFields = function(){
+
+			return this.fields;
+
+		}
+
+
+
+
+
+
+		// Execute.
+		$(document).ready(function(){
+
+			var myShoppingCart = new ShoppingCartFormModel;
+			var checkoutFormModel = new ShoppingCartFormModel('checkoutForm', GLOBALS.formFields);
+
+			//var checkoutFormModel = new myShoppingCart.FormModel('checkoutForm', GLOBALS.formFields);
+			//checkoutFormModel.addField('address', 'str. Londra nr. 7');
+			//checkoutFormModel.addField('email', 'sg@avangate.com');
+
+			//console.log(checkoutForm.getFields());
+
+
+		});
+
+	</script>
+</head>
+<body>
+
+
+<div class="page">
+
+	<div class="header"></div>
+
+	<div class="content">
+		<form method="post">
+			<fieldset>
+				<label for="name">Name</label>
+				<input type="text" name="name" id="name" value="" />
+
+				<br>
+
+				<label for="country">Country</label>
+				<select name="country" id="country">
+					<option>Select</option>
+					<option value="AF">Afghanistan</option>
+					<option value="RO">Romania</option>
+					<option value="US">United States of America</option>
+				</select>
+
+				<br>
+
+				<label for="state">State</label>
+				<select name="state" id="state">
+					<option>Select</option>
+					<option value="IF">Ilfov</option>
+					<option value="DJ">Dolj</option>
+					<option value="B">Bucuresti</option>
+				</select>
+
+				<br>
+
+				<input type="submit" name="checkout" value="Checkout" id="checkoutBtn">
+
+
+			</fieldset>
+		</form>
+	</div>
+
+	<div class="footer"></div>
+
+</div>
+
+</body>
+</html>

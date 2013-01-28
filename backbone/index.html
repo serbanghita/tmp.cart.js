@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<meta name="description" content="ShoppingCart demo with Backbone.js" />
+<title>ShoppingCart demo with Backbone.js</title>
+
+<script src="/js/GLOBAL.js"></script>
+<script src="/js/jquery-1.9.0.min.js"></script>
+<!--
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+-->
+<script src="/js/underscore.js"></script>
+<script src="/js/backbone.js"></script>
+<script src="js/shoppingcart.backbone.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    ShoppingCart.start();
+  });
+</script>
+
+
+</head>
+<body>
+
+  <div class="page">
+
+    <div class="header" id="HeaderView"></div>
+
+    <div class="content">
+      <div id="CheckoutFormView"></div>
+    </div>
+
+    <div class="footer" id="FooterView"></div>
+
+  </div>
+
+
+  <!-- templates -->
+  <!-- Header -->
+  <script type="text/html" id="HeaderTemplate">
+    <h1>{{vendorName}}</h1>
+  </script>
+
+  <!-- Footer -->
+  <script type="text/html" id="FooterTemplate">
+    <p><a href="#">Terms</a> | <a href="#">Legal</a> | <a href="#">Privacy</a></p>
+  </script>
+
+  <!-- Checkout -->
+  <script type="text/html" id="CheckoutFormTemplate">
+
+    <form action="shoppingcart.php" method="post">
+
+      <div class="control-group">
+        <label for="fname" class="control-label">[% model.labels.fname %]</label>
+          <div class="controls">
+          <input type="text" name="fname" id="fname" value="[% model.fields.fname %]" placeholder="[% model.labels.fname %]" />
+          </div>
+      </div>
+
+      <div class="control-group">
+        <label for="lname" class="control-label">[% model.labels.lname %]</label>
+          <div class="controls">
+          <input type="text" name="lname" id="lname" value="[% model.fields.lname %]" placeholder="[% model.labels.lname %]" />
+          </div>
+      </div>
+
+      <div class="control-group">
+        <label for="billingcountry" class="control-label">[% model.labels.billingcountry %]</label>
+          <div class="controls">
+            <select name="billingcountry" id="billingcountry">
+              <option value="">Please select</option>
+              <option value="111">Romania</option>
+              <option value="222">United States of America</option>
+            </select>
+          </div>
+      </div>        
+
+      <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn">[% model.labels.Checkout %]</button>
+          </div>
+      </div>
+
+    </form>
+
+  </script>
+
+</body>
+</html>
