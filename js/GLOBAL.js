@@ -53,7 +53,10 @@ var GLOBAL = {
 		please_select: "Please select",
 		// ...
 		
-		Checkout: 'Checkout'
+		Checkout: 'Checkout',
+		fname_error: 'Please enter your name',
+		lname_error: 'Please enter your name',
+		billingcountry_error: 'Please select the country'
 
 	},
 
