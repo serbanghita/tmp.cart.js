@@ -33,7 +33,9 @@ ShoppingCart.CheckoutFormModel = Backbone.Model.extend({
 			billingcountry: 'Country',
 			Checkout: 'Checkout'
 
-		}
+		},
+
+		test: 'Serban'
 
 	},
 
@@ -43,15 +45,50 @@ ShoppingCart.CheckoutFormModel = Backbone.Model.extend({
 
 	},
 
-	setFields: function(fields){
+	setField: function(fieldName, fieldValue){
 
+		//this.attributes.fields[fieldName] = fieldValue;
+		this.get('fields')[fieldName] = fieldValue;
 
 	},
 
-	setLabels: function(labels){
+	setLabel: function(labelName, labelValue){
 
+		//this.attributes.labels[labelName] = labelValue;
+		this.get('labels')[labelName] = labelValue;
+
+	},
+
+	validate: function(attributes){
+
+		console.log('validate()');
+
+		if(!attributes.fields.fname){
+
+			return GLOBAL.text.fname;
+
+		}
+
+		if(!attributes.fields.lname){
+
+			return GLOBAL.text.lname;
+
+		}
+
+		if(attributes.fields.billingcountry <= 0){
+
+			return GLOBAL.text.billingcountry;
+
+		}
+
+		if(!attributes.test){
+
+			return 'Its working man!';
+
+		}
 
 	}
+
 
 });
 
@@ -88,8 +125,19 @@ ShoppingCart.CheckoutFormView = Backbone.View.extend({
 		console.log('initialize()');
 		this.template = _.template($('#CheckoutFormTemplate').html());
 		this.model = new ShoppingCart.CheckoutFormModel();
+		// Trigger errors.
+		this.model.on('error', function(model, error){
+			//console.log(error);
+			console.log('There is an error!');
+		});
 		this.model.bind('change', this.render, this);
-		this.render();
+
+		this.model.setLabel('fname', 'Your name biatch!');	
+		this.model.setField('fname', 'WTF');
+		console.log(this.model.get('test'));
+		this.model.set('test', '');
+		
+		this.render();	
 
 	}
 
