@@ -189,45 +189,64 @@ var GLOBAL = {
 	country: 237,
 	countries: {
 
-		1: { 'label': 'Afghanistan' },
-		2: { 'label': 'Albania' },
-		3: { 'label': 'Algeria' },
-		4: { 'label': 'American Samoa' },
-		5: { 'label': 'Andorra' },
-		6: { 'label': 'Angola' },
-		7: { 'label': 'Anguilla' },
-		8: { 'label': 'Antarctica' },
-		237: { 'label': 'Romania', 'taxzone': 'EU' }
+		1: { label: 'Afghanistan' },
+		2: { label: 'Albania' },
+		3: { label: 'Algeria' },
+		4: { label: 'American Samoa' },
+		5: { label: 'Andorra' },
+		6: { label: 'Angola' },
+		7: { label: 'Anguilla' },
+		8: { label: 'Antarctica' },
+		237: { label: 'Romania', 'taxzone': 'EU' },
+		111: { label: 'United States of America' }
 
 	},
 
-	state: null,
+	state: 1,
 	states: {
 
 		39: {
-			0: 'Alberta',
-			1: 'British Columbia',
-			2: 'Manitoba',
-			3: 'New Brunswick',
-			4: 'Newfoundland and Labrador',
-			5: 'Northwest Territories',
-			6: 'Nova Scotia',
-			7: 'Nunavut',
-			8: 'Ontario',
-			9: 'Prince Edward Island',
-			10: 'Quebec',
-			11: 'Saskatchewan',
-			12: 'Yukon Territory'			
+			0: { label: 'Alberta'},
+			1: { label: 'British Columbia'},
+			2: { label: 'Manitoba'},
+			3: { label: 'New Brunswick'},
+			4: { label: 'Newfoundland and Labrador'},
+			5: { label: 'Northwest Territories'},
+			6: { label: 'Nova Scotia'},
+			7: { label: 'Nunavut'},
+			8: { label: 'Ontario'},
+			9: { label: 'Prince Edward Island'},
+			10: { label: 'Quebec'},
+			11: { label: 'Saskatchewan'},
+			12: { label: 'Yukon Territory'}
 		},
 
 		73: {
 
-			0: "Ain",
-			1: "Aisne",
-			2: "Allier",
-			3: "Alpes-de-Haute-Provence",
-			4: "Alpes-Maritimes"
+			0: { label: "Ain" },
+			1: { label: "Aisne" },
+			2: { label: "Allier" },
+			3: { label: "Alpes-de-Haute-Provence" },
+			4: { label: "Alpes-Maritimes" }
 			// ...			
+
+		},
+
+		111: {
+
+			0: { label: 'Alabama' },
+			1: { label: 'Colorado' },
+			2: { label: 'San Francisco' },
+			3: { label: 'Texas' }
+
+		},
+
+		237: {
+
+			0: { label: 'Bucuresti'},
+			1: { label: 'Dolj'},
+			2: { label: 'Olt'},
+			3: { label: 'Teleorman'}
 
 		}
 

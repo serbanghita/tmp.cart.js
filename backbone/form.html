@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<meta name="description" content="ShoppingCart demo with Backbone.js" />
+<title>ShoppingCart demo with Backbone.js</title>
+
+<script src="/js/GLOBAL.js"></script>
+<script src="/js/jquery-1.9.0.min.js"></script>
+<!--
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+-->
+<script src="/js/underscore.js"></script>
+<script src="/js/backbone.js"></script>
+<script src="js/shoppingcart.form.backbone.js"></script>
+
+</head>
+<body>
+
+	<div class="page"></div>
+
+
+  <!-- Checkout -->
+  <script type="text/x-underscore-template" id="CheckoutFormTemplate">
+
+    <form action="shoppingcart.php" method="post">
+    
+      <div class="control-group">
+        <label for="fname" class="control-label">First name</label>
+          <div class="controls">
+          <input type="text" name="fname" id="fname" value="<%= fname %>" placeholder="" />
+          </div>
+      </div>
+
+      <div class="control-group">
+        <label for="lname" class="control-label">Last name</label>
+          <div class="controls">
+          <input type="text" name="lname" id="lname" value="<%= lname %>" placeholder="" />
+          </div>
+      </div>
+
+      <div class="control-group">
+        <label for="billingcountry" class="control-label">Country</label>
+          <div class="controls">
+            <select name="billingcountry" id="billingcountry">
+              <% _(allCountries).each(function(item, itemId) { %>
+                <option value="<%= itemId %>" <% if(itemId == billingcountry) { %>selected<% } %>><%= item.label %></option>
+              <% }); %>
+              </select>
+          </div>
+      </div> 
+
+      <div class="control-group">
+        <label for="state" class="control-label">State</label>
+        <div class="controls">
+          <select name="state" id="state">
+              <% _(allStates).each(function(item, itemId) { %>
+                <option value="<%= itemId %>" <% if(itemId == state) { %>selected<% } %>><%= item.label %></option>
+              <% }); %>            
+          </select>
+        </div>
+      </div> 
+
+      <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn">Checkout</button>
+          </div>
+      </div>
+
+    </form>
+
+  </script>	
+
+</body>
+</html>
